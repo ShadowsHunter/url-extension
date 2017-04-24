@@ -1,14 +1,10 @@
 url-extension
 =============
 
-  Extend a java process with multiple URLStreamHandlers. URLStreamHandler can be registered through
-  the service provider pattern or programmatically.  
+Extend a java process with multiple URLStreamHandlers. URLStreamHandler can be registered through
+the service provider pattern or programmatically.  This artifact provides support for a 'tcp' scheme.
   
-  This artifact provides support for a 'tcp' scheme.  
-  The tcp scheme is ```tcp://[[<localaddress>][:<localport>]@]<remoteaddress>:<remoteport>```. 
-  
-  This jar can also be used as a maven extension
-  to allow maven plugins to use URL schemes not handled by the JRE.
+This jar can also be used as a maven extension to allow maven plugins to use URL schemes not handled by the JRE.
 
 ### Requirements
 * Minimum of Java 7
@@ -40,14 +36,12 @@ To include url-extension as an extension for plugins in your maven build, use th
   </build>
 ```
 
-## Java Samples
-
+## UrlExtension
 To register a URLStreamHandlerFactory:
 ```java
     UrlStreamHandlerRegistry registry;
     // ...
     registry.factory(new TcpUrlStreamHandlerFactory());
-
 ```
 
 To add all URLStreamHandlerFactory(s) that implement the service provider pattern:
@@ -63,3 +57,8 @@ which should be added to the registry.  For example, the
 ```text
 org.honton.chas.url.extension.urlhandler.TcpUrlStreamHandlerFactory
 ```
+
+## Tcp scheme
+
+The **TcpUrlStreamHandler** supports URLs with the following syntax: ```tcp://[[<localaddress>][:<localport>]@]<remoteaddress>:<remoteport>```.
+The remote address and remote port values are required.  The local address and local port values are optional.
